@@ -89,7 +89,9 @@ const Business = () => {
       (each) =>
         each.services.some((eachService) =>
           eachService.toLowerCase().includes(searchInput.toLowerCase()),
-        ) || each.category.toLowerCase().includes(searchInput.toLowerCase()),
+        ) ||
+        each.category.toLowerCase().includes(searchInput.toLowerCase()) ||
+        each.name.toLowerCase().includes(searchInput.toLowerCase()),
     );
 
     return filteredList;
