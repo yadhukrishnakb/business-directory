@@ -1,0 +1,136 @@
+/* Main Background */
+
+.contact-section-bg-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contact Content */
+
+.contact-section-content-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.contact-section-content-container h1 {
+  margin: 0 0 15px;
+  font-size: 34px;
+  color: #1f2937;
+}
+
+.contact-section-content-container > p {
+  margin: 0 0 30px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+/* Description */
+
+.contact-section-description {
+  padding: 22px;
+  margin-bottom: 30px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.contact-section-description p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.contact-section-description span {
+  display: block;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+/* Button */
+
+.contact-section-content-container button {
+  padding: 11px 22px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-section-content-container button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .contact-section-bg-container {
+    padding: 30px 20px;
+  }
+
+  .contact-section-content-container {
+    margin: 60px auto;
+    padding: 30px;
+  }
+
+  .contact-section-content-container h1 {
+    font-size: 30px;
+  }
+
+  .contact-section-content-container > p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .contact-section-bg-container {
+    padding: 20px 12px;
+  }
+
+  .contact-section-content-container {
+    margin: 40px auto;
+    padding: 25px 18px;
+  }
+
+  .contact-section-content-container h1 {
+    font-size: 26px;
+  }
+
+  .contact-section-content-container > p {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+
+  .contact-section-description {
+    padding: 18px 15px;
+  }
+
+  .contact-section-description p {
+    font-size: 14px;
+  }
+
+  .contact-section-content-container button {
+    width: 100%;
+    max-width: 220px;
+  }
+}

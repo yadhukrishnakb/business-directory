@@ -5,6 +5,64 @@ import BusinessCard from "../BusinessCard";
 import Footer from "../Footer";
 import "./index.css";
 
+const tempData = [
+  {
+    _id: 1,
+    name: "Sample Tutor Center",
+    category: "Tutor",
+    description:
+      "This is a sample business description for testing the directory.",
+    phone: ["0000000001"],
+    location: "Sample City",
+    services: ["Math Classes", "Science Classes", "Online Tuition"],
+    workingHours: "9:00 AM - 5:00 PM",
+  },
+  {
+    _id: 2,
+    name: "Demo Tech Services",
+    category: "Computer Repair",
+    description:
+      "Placeholder business data used for testing and designing the website.",
+    phone: ["0000000002"],
+    location: "Demo Town",
+    services: ["Laptop Repair", "Software Support", "Computer Setup"],
+    workingHours: "10:00 AM - 6:00 PM",
+  },
+  {
+    _id: 3,
+    name: "Example Fresh Bakery",
+    category: "Bakery",
+    description:
+      "Sample bakery listing created for testing the business directory.",
+    phone: ["0000000003"],
+    location: "Example City",
+    services: ["Bread", "Cakes", "Pastries"],
+    workingHours: "7:00 AM - 8:00 PM",
+  },
+  {
+    _id: 4,
+    name: "Demo Beauty Studio",
+    category: "Beauty Salon",
+    description:
+      "Temporary placeholder listing for demonstrating salon information.",
+    phone: ["0000000004"],
+    location: "Test Village",
+    services: ["Haircut", "Hair Styling", "Basic Facial"],
+    workingHours: "10:00 AM - 7:00 PM",
+  },
+  {
+    _id: 5,
+    name: "Sample Home Services",
+    category: "Home Services",
+    description:
+      "Dummy business information used as temporary content for the website.",
+    phone: ["0000000005"],
+    location: "Demo City",
+    services: ["Cleaning", "Plumbing", "Electrical Work"],
+    workingHours: "8:00 AM - 6:00 PM",
+  },
+];
+
 const apiStatusConstants = {
   initial: "INITIAL",
   success: "SUCCESS",
@@ -174,12 +232,6 @@ const Business = () => {
           Find Local Businesses & Services <br /> Discover trusted businesses
           and services near you
         </h1>
-        <input
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search businesses, services, or locations..."
-        />
       </div>
       <div className="filters-container">
         <div className="filters-header">
@@ -191,6 +243,7 @@ const Business = () => {
             onClick={() => {
               setActiveCategory(categoriesList[0]);
               setActiveLocation(locationsList[0]);
+              setSearchInput("");
             }}
           >
             Clear Filters
@@ -220,7 +273,15 @@ const Business = () => {
             </select>
           </div>
         </div>
+        <input
+          className="search-input-element"
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search businesses, services, or locations..."
+        />
       </div>
+
       <div className="content-container">
         <h1>Businesses</h1>
         {renderContent()}

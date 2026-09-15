@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 import "./index.css";
 
 const Navbar = () => (
   <div className="navbar">
     <div className="navbar-content">
-      <h1 className="logo">Business Directory</h1>
+      <h1 className="logo">
+        <Link to="/">Business Directory</Link>
+      </h1>
 
       <nav className="nav-links">
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
       </nav>
     </div>
   </div>
