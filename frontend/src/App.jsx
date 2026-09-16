@@ -3,6 +3,7 @@ import Business from "./components/Business";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
+import AdminDashboard from "./components/AdminDashboard";
 //import Navbar from "./components/Navbar";
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/not-found" element={<NotFound />} />
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path="*" element={<Navigate to="/not-found" />} />
     </Routes>
   </>

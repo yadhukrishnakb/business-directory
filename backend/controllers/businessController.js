@@ -12,4 +12,75 @@ const getBusinesses = async (request, response) => {
   }
 };
 
-module.exports = { getBusinesses };
+const updateBusiness = async (request, response) => {
+  try {
+    const { id, savedChanges } = request.body;
+    console.log(request.body);
+    const updatedBusiness = await Business.findOneAndUpdate(
+      { _id: id },
+      { $set: savedChanges },
+      { new: true },
+    );
+
+    if (!updatedBusiness) {
+      return response.status(404).json({ message: "Business not found" });
+    }
+
+    return response
+      .status(200)
+      .json({ message: "Changes Saved", updatedBusiness });
+  } catch (err) {
+    return response.status(500).json({ message: err.message });
+  }
+};
+
+const deleteBusiness = async (request, response) => {
+  try {
+    const { id } = request.params;
+    const deletedBusiness = await Business.findOneAndDelete({ _id: id });
+
+    if (!deletedBusiness) {
+      return response.status(404).json({ message: "Business Not Found" });
+    }
+
+    return response
+      .status(200)
+      .json({ message: "Business deleted successfully!" });
+  } catch (err) {
+    return response.status(500).json({ message: err.message });
+  }
+};
+
+const addBusiness = async (request, response) => {
+  try {
+    const {
+      name,
+      category,
+      description,
+      phone,
+      location,
+      services,
+      workingHours,
+    } = request.body;
+    const addedBusiness = new Business({
+      name,
+      category,
+      description,
+      phone,
+      location,
+      services,
+      workingHours,
+    });
+
+    console.log(addedBusiness);
+
+    const savedBusiness = await addedBusiness.save();
+    return response
+      .status(201)
+      .json({ message: "Business added successfully!", savedBusiness });
+  } catch (err) {
+    return response.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = { getBusinesses, updateBusiness, deleteBusiness, addBusiness };

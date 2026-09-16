@@ -1,0 +1,590 @@
+.admin-dashboard-bg-container {
+  min-height: 100vh;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  background-color: #f5f7fa;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .admin-dashboard-bg-container {
+    padding: 30px 20px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .admin-dashboard-bg-container {
+    padding: 20px 12px;
+  }
+}
+
+.admin-business-cards-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .admin-business-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .admin-business-cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Dashboard Header */
+
+.admin-dashboard-header {
+  width: 100%;
+  max-width: 1100px;
+  margin: 35px auto 30px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}
+
+.admin-dashboard-title {
+  flex: 1;
+}
+
+.admin-dashboard-title h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.3;
+  color: #1f2937;
+}
+
+.admin-dashboard-title p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.admin-dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-dashboard-actions button {
+  height: 42px;
+  padding: 0 16px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-dashboard-actions button:hover {
+  background-color: #1d4ed8;
+}
+
+.admin-dashboard-actions input {
+  width: 220px;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #374151;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.admin-dashboard-actions input:focus {
+  border-color: #2563eb;
+}
+
+.admin-dashboard-actions input::placeholder {
+  color: #9ca3af;
+}
+
+/* Business Listings Heading */
+
+.business-listings-heading {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  color: #1f2937;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .admin-dashboard-header {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .admin-dashboard-title h1 {
+    font-size: 23px;
+  }
+
+  .admin-dashboard-actions input {
+    width: 180px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .admin-dashboard-header {
+    margin-top: 25px;
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .admin-dashboard-title h1 {
+    font-size: 21px;
+  }
+
+  .admin-dashboard-title p {
+    font-size: 13px;
+  }
+
+  .admin-dashboard-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-dashboard-actions button {
+    width: 100%;
+  }
+
+  .admin-dashboard-actions input {
+    width: 100%;
+  }
+
+  .business-listings-heading {
+    font-size: 21px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Add Business */
+
+/* Add Business */
+
+.add-business-container-admin {
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+}
+
+.add-business-container-admin h1 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.label-input-container-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.label-input-container-admin label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.label-input-container-admin input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #374151;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+}
+
+.label-input-container-admin input::placeholder {
+  color: #9ca3af;
+}
+
+.label-input-container-admin input:focus {
+  border-color: #2563eb;
+}
+
+.add-business-button-container-admin {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.add-business-button-container-admin button {
+  padding: 10px 18px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-business-button-container-admin button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .add-business-container-admin {
+    padding: 18px;
+  }
+
+  .add-business-container-admin h1 {
+    font-size: 19px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .add-business-container-admin {
+    margin-top: 16px;
+    padding: 15px;
+  }
+
+  .add-business-container-admin h1 {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .label-input-container-admin {
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  .label-input-container-admin label {
+    font-size: 13px;
+  }
+
+  .label-input-container-admin input {
+    height: 42px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .add-business-button-container-admin {
+    margin-top: 16px;
+  }
+
+  .add-business-button-container-admin button {
+    width: 100%;
+    padding: 11px 16px;
+  }
+}
+
+.empty-list-view-admin {
+  width: 100%;
+  min-height: 350px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.empty-list-view-admin img {
+  width: 170px;
+  max-width: 60%;
+  margin-bottom: 20px;
+}
+
+.empty-list-view-admin h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+.empty-list-view-admin p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .empty-list-view-admin {
+    min-height: 320px;
+  }
+
+  .empty-list-view-admin img {
+    width: 155px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .empty-list-view-admin {
+    min-height: 280px;
+    padding: 30px 15px;
+  }
+
+  .empty-list-view-admin img {
+    width: 140px;
+    margin-bottom: 16px;
+  }
+
+  .empty-list-view-admin h1 {
+    font-size: 20px;
+  }
+
+  .empty-list-view-admin p {
+    font-size: 14px;
+  }
+}
+
+.add-business-failure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.add-business-failure button {
+  padding: 10px 18px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.something-went-wrong {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #dc2626;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .add-business-failure {
+    align-items: stretch;
+  }
+
+  .add-business-failure button {
+    width: 100%;
+  }
+
+  .something-went-wrong {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+.add-business-success-container-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.add-business-success-container-admin button {
+  padding: 10px 18px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-business-success-container-admin button:hover {
+  background-color: #1d4ed8;
+}
+
+.add-business-success-container-admin p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #16a34a;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .add-business-success-container-admin {
+    align-items: stretch;
+  }
+
+  .add-business-success-container-admin button {
+    width: 100%;
+  }
+
+  .add-business-success-container-admin p {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+.business-list-loader-admin {
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .business-list-loader-admin {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-list-loader-admin {
+    min-height: 280px;
+  }
+}
+
+.failure-container-admin {
+  width: 100%;
+  min-height: 350px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.failure-container-admin img {
+  width: 190px;
+  max-width: 60%;
+  margin-bottom: 20px;
+}
+
+.failure-container-admin h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 1.3;
+  color: #1f2937;
+}
+
+.failure-container-admin p {
+  max-width: 400px;
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.failure-container-admin button {
+  padding: 10px 18px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.failure-container-admin button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .failure-container-admin {
+    min-height: 320px;
+    padding: 35px 20px;
+  }
+
+  .failure-container-admin img {
+    width: 170px;
+  }
+
+  .failure-container-admin h1 {
+    font-size: 21px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .failure-container-admin {
+    min-height: 280px;
+    padding: 30px 15px;
+  }
+
+  .failure-container-admin img {
+    width: 145px;
+    max-width: 70%;
+    margin-bottom: 16px;
+  }
+
+  .failure-container-admin h1 {
+    font-size: 19px;
+  }
+
+  .failure-container-admin p {
+    max-width: 300px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .failure-container-admin button {
+    width: 100%;
+    max-width: 160px;
+    padding: 10px 15px;
+  }
+}
