@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -90,6 +90,11 @@ const AdminLogin = () => {
         <button type="submit">Login</button>
         {errMsg !== "" && <p className="err-msg-admin">{errMsg}</p>}
       </form>
+      <div className="go-home-button-container">
+        <button type="button" onClick={() => navigate("/", { replace: true })}>
+          GO HOME
+        </button>
+      </div>
     </div>
   );
 };

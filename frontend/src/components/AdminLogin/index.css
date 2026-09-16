@@ -161,3 +161,51 @@
     font-size: 16px;
   }
 }
+
+.go-home-button-container {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.go-home-button-container button {
+  padding: 9px 20px;
+  background-color: #ffffff;
+  color: #4b5563;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.go-home-button-container button:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  color: #1f2937;
+}
+
+@media (max-width: 768px) {
+  .go-home-button-container {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .go-home-button-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .go-home-button-container button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}

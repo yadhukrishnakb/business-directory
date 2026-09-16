@@ -13,7 +13,9 @@ const adminLogin = async (request, response) => {
     const existingUser = await Admin.findOne({ email });
 
     if (!existingUser) {
-      return response.status(404).json({ message: "User not exist!" });
+      return response
+        .status(404)
+        .json({ message: "Invalid email or password!" });
     }
 
     const passwordMatched = await bcrypt.compare(
