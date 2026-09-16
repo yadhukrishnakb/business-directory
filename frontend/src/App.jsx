@@ -4,7 +4,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 import AdminDashboard from "./components/AdminDashboard";
-//import Navbar from "./components/Navbar";
+import AdminLogin from "./components/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 const App = () => (
   <>
@@ -13,7 +14,15 @@ const App = () => (
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/not-found" element={<NotFound />} />
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route
+        path="/admin-dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/admin-login" element={<AdminLogin />} />
       <Route path="*" element={<Navigate to="/not-found" />} />
     </Routes>
   </>

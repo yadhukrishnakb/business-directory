@@ -114,7 +114,8 @@ const AdminDashboard = () => {
     getBusinessesList();
   };
 
-  const onAddBusiness = async () => {
+  const onAddBusiness = async (e) => {
+    e.preventDefault();
     const newBusiness = {
       name: nameInput,
       category: categoryInput,
@@ -163,9 +164,7 @@ const AdminDashboard = () => {
       case apiStatusConstants.success:
         return (
           <div className="add-business-success-container-admin">
-            <button type="button" onClick={onAddBusiness}>
-              Add Business
-            </button>
+            <button type="submit">Add Business</button>
             <p>Business added successfully!</p>
           </div>
         );
@@ -185,20 +184,14 @@ const AdminDashboard = () => {
       case apiStatusConstants.failure:
         return (
           <div className="add-business-failure">
-            <button type="button" onClick={onAddBusiness}>
-              Try Again
-            </button>
+            <button type="submit">Try Again</button>
             <p className="something-went-wrong message">
               Failed to add business. Please try again.
             </p>
           </div>
         );
       default:
-        return (
-          <button type="button" onClick={onAddBusiness}>
-            Add Business
-          </button>
-        );
+        return <button type="submit">Add Business</button>;
     }
   };
 
@@ -288,7 +281,7 @@ const AdminDashboard = () => {
   };
 
   const renderForm = () => (
-    <div className="add-business-container-admin">
+    <form onSubmit={onAddBusiness} className="add-business-container-admin">
       <h1>Add Business</h1>
 
       <div className="label-input-container-admin">
@@ -320,6 +313,7 @@ const AdminDashboard = () => {
           value={descriptionInput}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Briefly describe the business"
+          required={true}
         />
       </div>
 
@@ -369,7 +363,7 @@ const AdminDashboard = () => {
       <div className="add-business-button-container-admin">
         {renderAddStatus()}
       </div>
-    </div>
+    </form>
   );
 
   const handleToggle = () => {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import "./index.css";
 
 const apiStatusConstants = {
@@ -59,18 +60,38 @@ const AdminBusinessCard = ({
   const renderSavingStatus = () => {
     switch (saveApiStatus) {
       case apiStatusConstants.inProgress:
-        return <p>Saving Changes..</p>;
+        return (
+          <div className="saving-progress-container-admin">
+            <p>Saving changes...</p>
+            <button type="button">
+              <ThreeDots
+                visible={true}
+                height="20"
+                width="35"
+                color="#ffffff"
+                radius="8"
+                ariaLabel="saving-business"
+              />
+            </button>
+          </div>
+        );
       case apiStatusConstants.failure:
         return (
-          <button type="button" onClick={onClickSaveChanges}>
-            Retry
-          </button>
+          <div className="save-retry-container-admin">
+            <p>Something went wrong!</p>
+            <button type="button" onClick={onClickSaveChanges}>
+              Retry
+            </button>
+          </div>
         );
       default:
         return (
-          <button type="button" onClick={onClickSaveChanges}>
-            Save Changes
-          </button>
+          <div className="save-changes-container-admin">
+            <p>Changes Saved!</p>
+            <button type="button" onClick={onClickSaveChanges}>
+              Save Changes
+            </button>
+          </div>
         );
     }
   };
@@ -78,6 +99,7 @@ const AdminBusinessCard = ({
   const renderConfirmDeleteButtons = () => {
     return (
       <div className="confirm-button-container-admin">
+        <p>Confirm Delete?</p>
         <button type="button" onClick={() => deleteBusiness(business._id)}>
           YES
         </button>

@@ -72,7 +72,7 @@ const addBusiness = async (request, response) => {
       workingHours,
     });
 
-    console.log(addedBusiness);
+    // console.log(addedBusiness);
 
     const savedBusiness = await addedBusiness.save();
     return response
