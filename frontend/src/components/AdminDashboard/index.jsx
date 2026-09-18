@@ -110,8 +110,11 @@ const AdminDashboard = () => {
     const options = {
       method: "DELETE",
     };
-    await fetch(apiUrl, options);
-    getBusinessesList();
+    const response = await fetch(apiUrl, options);
+    const data = await response.json();
+    setBusinessesList(data.businesses);
+    //console.log(data.businesses);
+    //getBusinessesList();
   };
 
   const onAddBusiness = async (e) => {

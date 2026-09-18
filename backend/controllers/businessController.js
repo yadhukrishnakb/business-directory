@@ -43,9 +43,11 @@ const deleteBusiness = async (request, response) => {
       return response.status(404).json({ message: "Business Not Found" });
     }
 
+    const businesses = await Business.find();
+
     return response
       .status(200)
-      .json({ message: "Business deleted successfully!" });
+      .json({ message: "Business deleted successfully!", businesses });
   } catch (err) {
     return response.status(500).json({ message: err.message });
   }
