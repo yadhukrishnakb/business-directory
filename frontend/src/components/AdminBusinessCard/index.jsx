@@ -94,6 +94,7 @@ const AdminBusinessCard = ({
   const deleteBusiness = async () => {
     try {
       setDeleteApiStatus(apiStatusConstants.inProgress);
+      setConfirmDelete(false);
       const apiUrl = import.meta.env.VITE_API_URL + `/business/${business._id}`;
       const options = {
         method: "DELETE",
