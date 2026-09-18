@@ -179,13 +179,15 @@ const AdminBusinessCard = ({
   };
 
   const renderLoader = () => (
-    <Oval
-      visible={true}
-      height="24"
-      width="24"
-      color="#dc2626"
-      ariaLabel="delete-loading"
-    />
+    <button type="button" disabled={true}>
+      <Oval
+        visible={true}
+        height="24"
+        width="24"
+        color="#dc2626"
+        ariaLabel="delete-loading"
+      />
+    </button>
   );
 
   const renderSavedView = () => (
@@ -222,6 +224,8 @@ const AdminBusinessCard = ({
         </button>
         {confirmDelete ? (
           renderConfirmDeleteButtons()
+        ) : deleteApiStatus === apiStatusConstants.inProgress ? (
+          renderLoader()
         ) : (
           <button
             type="button"
@@ -230,9 +234,7 @@ const AdminBusinessCard = ({
             }
             onClick={() => setConfirmDelete(true)}
           >
-            {deleteApiStatus === apiStatusConstants.inProgress
-              ? renderLoader()
-              : "DELETE"}
+            DELETE
           </button>
         )}
       </div>
