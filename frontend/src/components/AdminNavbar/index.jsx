@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./index.css";
 
@@ -10,7 +10,9 @@ const AdminNavbar = () => {
   };
   return (
     <div className="admin-navbar">
-      <h1>Business Directory</h1>
+      <Link to="/">
+        <h1>Business Directory</h1>
+      </Link>
       <ul className="admin-navbar-items">
         <li>Admin</li>
         <li>

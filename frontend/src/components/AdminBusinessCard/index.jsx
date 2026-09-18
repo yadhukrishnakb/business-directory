@@ -55,7 +55,7 @@ const AdminBusinessCard = ({
       location: locationInput,
       services: servicesInput.split(","),
       workingHours: workingHoursInput,
-      edit: true,
+      edit: false,
     };
     //saveCard(business._id, savedChanges);
     try {

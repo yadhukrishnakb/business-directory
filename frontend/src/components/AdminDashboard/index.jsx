@@ -55,7 +55,7 @@ const AdminDashboard = () => {
   }, []);
 
   const editCard = async (id) => {
-    /* setBusinessesList((prevState) =>
+    setBusinessesList((prevState) =>
       prevState.map((each) => {
         if (each._id === id) {
           return {
@@ -65,8 +65,8 @@ const AdminDashboard = () => {
         }
         return each;
       }),
-    );*/
-    const currentState = businessesList.find((each) => each._id === id);
+    );
+    /*const currentState = businessesList.find((each) => each._id === id);
     //console.log(currentState);
     const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
     const savedChanges = { edit: !currentState.edit };
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
         }
         return each;
       }),
-    );
+    ); */
     //getBusinessesList();
   };
 
