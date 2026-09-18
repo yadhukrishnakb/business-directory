@@ -27,8 +27,7 @@ const {
 const AdminBusinessCard = ({
   business,
   editCard,
-  saveCard,
-  saveApiStatus,
+  updateState,
   deleteBusiness,
 }) => {
   const [nameInput, setName] = useState(business.name);
@@ -38,13 +37,16 @@ const AdminBusinessCard = ({
   const [locationInput, setLocation] = useState(business.location);
   const [servicesInput, setServices] = useState(business.services.join(","));
   const [workingHoursInput, setWorkingHours] = useState(business.workingHours);
+  const [saveApiStatus, setSaveApiStatus] = useState(
+    apiStatusConstants.initial,
+  );
 
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const onClickEdit = () => {
     editCard(business._id);
   };
-  const onClickSaveChanges = () => {
+  const onClickSaveChanges = async () => {
     const savedChanges = {
       name: nameInput,
       category: categoryInput,
@@ -55,7 +57,46 @@ const AdminBusinessCard = ({
       workingHours: workingHoursInput,
       edit: true,
     };
-    saveCard(business._id, savedChanges);
+    //saveCard(business._id, savedChanges);
+    try {
+      setSaveApiStatus(apiStatusConstants.inProgress);
+      const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ id: business._id, savedChanges }),
+      };
+
+      const response = await fetch(apiUrl, options);
+      const data = await response.json();
+      //console.log("BC", JSON.stringify(data));
+
+      if (response.ok) {
+        setSaveApiStatus(apiStatusConstants.success);
+        updateState(business._id, data.updatedBusiness);
+        //getBusinessesList();
+        setTimeout(() => {
+          setSaveApiStatus(apiStatusConstants.initial);
+        }, 2000);
+      } else {
+        setSaveApiStatus(apiStatusConstants.failure);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const saveCard = async (id, savedChanges) => {
+    /* setBusinessesList((prevState) =>
+      prevState.map((each) => {
+        if (each._id === id) {
+          return { ...each, ...savedChanges, edit: false };
+        }
+        return each;
+      }),
+    ); */
   };
 
   const renderSavingStatus = () => {

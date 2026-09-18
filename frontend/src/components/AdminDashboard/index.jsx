@@ -15,9 +15,7 @@ const apiStatusConstants = {
 const AdminDashboard = () => {
   const [businessesList, setBusinessesList] = useState([]);
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.inProgress);
-  const [saveApiStatus, setSaveApiStatus] = useState(
-    apiStatusConstants.initial,
-  );
+
   const [searchInput, setSearchInput] = useState("");
   const [toggleForm, setToggleForm] = useState(false);
 
@@ -67,7 +65,7 @@ const AdminDashboard = () => {
         }
         return each;
       }),
-    ); */
+    );*/
     const currentState = businessesList.find((each) => each._id === id);
     //console.log(currentState);
     const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
@@ -79,46 +77,32 @@ const AdminDashboard = () => {
       },
       body: JSON.stringify({ id, savedChanges }),
     };
-    await fetch(apiUrl, options);
-    getBusinessesList();
-  };
-  const saveCard = async (id, savedChanges) => {
-    /* setBusinessesList((prevState) =>
+    const response = await fetch(apiUrl, options);
+    const data = await response.json();
+    //console.log(data.updatedBusiness.edit);
+    setBusinessesList((prevState) =>
       prevState.map((each) => {
         if (each._id === id) {
-          return { ...each, ...savedChanges, edit: false };
+          return {
+            ...each,
+            edit: data.updatedBusiness.edit,
+          };
         }
         return each;
       }),
-    ); */
+    );
+    //getBusinessesList();
+  };
 
-    try {
-      setSaveApiStatus(apiStatusConstants.inProgress);
-      const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
-      const options = {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ id, savedChanges }),
-      };
-
-      const response = await fetch(apiUrl, options);
-      const data = await response.json();
-      //console.log(data);
-
-      if (response.ok) {
-        setSaveApiStatus(apiStatusConstants.success);
-        getBusinessesList();
-        setTimeout(() => {
-          setSaveApiStatus(apiStatusConstants.initial);
-        }, 2000);
-      } else {
-        setSaveApiStatus(apiStatusConstants.failure);
-      }
-    } catch (err) {
-      console.log(err.message);
-    }
+  const updateState = (id, updatedData) => {
+    setBusinessesList((prevState) =>
+      prevState.map((each) => {
+        if (each._id === id) {
+          return { ...updatedData };
+        }
+        return each;
+      }),
+    );
   };
 
   const deleteBusiness = async (id) => {
@@ -240,9 +224,8 @@ const AdminDashboard = () => {
           <AdminBusinessCard
             business={each}
             editCard={editCard}
-            saveCard={saveCard}
-            saveApiStatus={saveApiStatus}
             apiStatusConstants={apiStatusConstants}
+            updateState={updateState}
             deleteBusiness={deleteBusiness}
             key={each._id}
           />
