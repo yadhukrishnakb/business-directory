@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
+import { ThreeDots, Oval } from "react-loader-spinner";
 import "./index.css";
 
 const apiStatusConstants = {
@@ -28,7 +28,7 @@ const AdminBusinessCard = ({
   business,
   editCard,
   updateState,
-  deleteBusiness,
+  updateStateAfterDelete,
 }) => {
   const [nameInput, setName] = useState(business.name);
   const [categoryInput, setCategory] = useState(business.category);
@@ -38,6 +38,9 @@ const AdminBusinessCard = ({
   const [servicesInput, setServices] = useState(business.services.join(","));
   const [workingHoursInput, setWorkingHours] = useState(business.workingHours);
   const [saveApiStatus, setSaveApiStatus] = useState(
+    apiStatusConstants.initial,
+  );
+  const [deleteApiStatus, setDeleteApiStatus] = useState(
     apiStatusConstants.initial,
   );
 
@@ -88,15 +91,24 @@ const AdminBusinessCard = ({
     }
   };
 
-  const saveCard = async (id, savedChanges) => {
-    /* setBusinessesList((prevState) =>
-      prevState.map((each) => {
-        if (each._id === id) {
-          return { ...each, ...savedChanges, edit: false };
-        }
-        return each;
-      }),
-    ); */
+  const deleteBusiness = async () => {
+    try {
+      setDeleteApiStatus(apiStatusConstants.inProgress);
+      const apiUrl = import.meta.env.VITE_API_URL + `/business/${business._id}`;
+      const options = {
+        method: "DELETE",
+      };
+      const response = await fetch(apiUrl, options);
+      const data = await response.json();
+      if (response.ok) {
+        // setDeleteApiStatus(apiStatusConstants.success);
+        updateStateAfterDelete(data.businesses);
+      } else {
+        setDeleteApiStatus(apiStatusConstants.failure);
+      }
+    } catch (err) {
+      setDeleteApiStatus(apiStatusConstants.failure);
+    }
   };
 
   const renderSavingStatus = () => {
@@ -156,7 +168,7 @@ const AdminBusinessCard = ({
     return (
       <div className="confirm-button-container-admin">
         <p>Confirm Delete?</p>
-        <button type="button" onClick={() => deleteBusiness(business._id)}>
+        <button type="button" onClick={() => deleteBusiness()}>
           YES
         </button>
         <button type="button" onClick={() => setConfirmDelete(false)}>
@@ -165,6 +177,16 @@ const AdminBusinessCard = ({
       </div>
     );
   };
+
+  const renderLoader = () => (
+    <Oval
+      visible={true}
+      height="24"
+      width="24"
+      color="#dc2626"
+      ariaLabel="delete-loading"
+    />
+  );
 
   const renderSavedView = () => (
     <li className="saved-view-card">
@@ -201,8 +223,16 @@ const AdminBusinessCard = ({
         {confirmDelete ? (
           renderConfirmDeleteButtons()
         ) : (
-          <button type="button" onClick={() => setConfirmDelete(true)}>
-            DELETE
+          <button
+            type="button"
+            disabled={
+              deleteApiStatus === apiStatusConstants.inProgress ? true : false
+            }
+            onClick={() => setConfirmDelete(true)}
+          >
+            {deleteApiStatus === apiStatusConstants.inProgress
+              ? renderLoader()
+              : "DELETE"}
           </button>
         )}
       </div>

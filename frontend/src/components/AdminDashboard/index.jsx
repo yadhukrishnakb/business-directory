@@ -105,16 +105,9 @@ const AdminDashboard = () => {
     );
   };
 
-  const deleteBusiness = async (id) => {
-    const apiUrl = import.meta.env.VITE_API_URL + `/business/${id}`;
-    const options = {
-      method: "DELETE",
-    };
-    const response = await fetch(apiUrl, options);
-    const data = await response.json();
-    setBusinessesList(data.businesses);
-    //console.log(data.businesses);
-    //getBusinessesList();
+  const updateStateAfterDelete = (businessesList) => {
+    console.log(businessesList);
+    setBusinessesList(businessesList);
   };
 
   const onAddBusiness = async (e) => {
@@ -229,7 +222,7 @@ const AdminDashboard = () => {
             editCard={editCard}
             apiStatusConstants={apiStatusConstants}
             updateState={updateState}
-            deleteBusiness={deleteBusiness}
+            updateStateAfterDelete={updateStateAfterDelete}
             key={each._id}
           />
         ))}
