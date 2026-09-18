@@ -15,11 +15,11 @@ const getBusinesses = async (request, response) => {
 const updateBusiness = async (request, response) => {
   try {
     const { id, savedChanges } = request.body;
-    console.log(request.body);
+    //console.log(request.body);
     const updatedBusiness = await Business.findOneAndUpdate(
       { _id: id },
       { $set: savedChanges },
-      { new: true },
+      { returnDocument: "after" },
     );
 
     if (!updatedBusiness) {

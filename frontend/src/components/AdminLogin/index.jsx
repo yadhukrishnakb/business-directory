@@ -73,6 +73,7 @@ const AdminLogin = () => {
         <div className="label-user-input-container-admin">
           <label htmlFor="password">Password</label>
           <input
+            id="password"
             type={showPassword ? "text" : "password"}
             required={true}
             value={password}
@@ -80,8 +81,9 @@ const AdminLogin = () => {
           />
         </div>
         <div className="check-box-label-input-container">
-          <label>Show Password</label>
+          <label htmlFor="show-password">Show Password</label>
           <input
+            id="show-password"
             type="checkbox"
             checked={showPassword}
             onChange={() => setShowPassword((prevState) => !prevState)}

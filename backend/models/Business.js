@@ -8,6 +8,7 @@ const businessSchema = new mongoose.Schema({
   location: { type: String, required: true, trim: true },
   services: [{ type: String, required: true, trim: true }],
   workingHours: { type: String, required: true, trim: true },
+  edit: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Business", businessSchema);

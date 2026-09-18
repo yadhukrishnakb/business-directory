@@ -40,7 +40,7 @@ const AdminDashboard = () => {
 
       if (response.ok) {
         const formattedData = data.business.map((each) => {
-          return { ...each, edit: false };
+          return { ...each };
         });
         setApiStatus(apiStatusConstants.success);
         setBusinessesList(formattedData);
@@ -56,18 +56,31 @@ const AdminDashboard = () => {
     getBusinessesList();
   }, []);
 
-  const editCard = (id) => {
-    setBusinessesList((prevState) =>
+  const editCard = async (id) => {
+    /* setBusinessesList((prevState) =>
       prevState.map((each) => {
         if (each._id === id) {
           return {
             ...each,
-            edit: true,
+            edit: !each.edit,
           };
         }
         return each;
       }),
-    );
+    ); */
+    const currentState = businessesList.find((each) => each._id === id);
+    //console.log(currentState);
+    const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
+    const savedChanges = { edit: !currentState.edit };
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ id, savedChanges }),
+    };
+    await fetch(apiUrl, options);
+    getBusinessesList();
   };
   const saveCard = async (id, savedChanges) => {
     /* setBusinessesList((prevState) =>
@@ -92,11 +105,14 @@ const AdminDashboard = () => {
 
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
 
       if (response.ok) {
         setSaveApiStatus(apiStatusConstants.success);
         getBusinessesList();
+        setTimeout(() => {
+          setSaveApiStatus(apiStatusConstants.initial);
+        }, 2000);
       } else {
         setSaveApiStatus(apiStatusConstants.failure);
       }

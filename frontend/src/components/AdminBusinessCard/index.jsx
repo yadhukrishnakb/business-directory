@@ -53,12 +53,25 @@ const AdminBusinessCard = ({
       location: locationInput,
       services: servicesInput.split(","),
       workingHours: workingHoursInput,
+      edit: true,
     };
     saveCard(business._id, savedChanges);
   };
 
   const renderSavingStatus = () => {
     switch (saveApiStatus) {
+      case apiStatusConstants.success:
+        return (
+          <div className="save-changes-container-admin">
+            <p>Changes Saved!</p>
+            <button type="button" onClick={onClickSaveChanges}>
+              Save Changes
+            </button>
+            <button type="button" onClick={onClickEdit}>
+              Close
+            </button>
+          </div>
+        );
       case apiStatusConstants.inProgress:
         return (
           <div className="saving-progress-container-admin">
@@ -87,9 +100,11 @@ const AdminBusinessCard = ({
       default:
         return (
           <div className="save-changes-container-admin">
-            <p>Changes Saved!</p>
             <button type="button" onClick={onClickSaveChanges}>
               Save Changes
+            </button>
+            <button type="button" onClick={onClickEdit}>
+              Close
             </button>
           </div>
         );
