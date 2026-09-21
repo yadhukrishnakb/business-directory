@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Cookies from "js-cookie";
 import { ThreeDots, Oval } from "react-loader-spinner";
 import "./index.css";
 
@@ -64,10 +65,12 @@ const AdminBusinessCard = ({
     try {
       setSaveApiStatus(apiStatusConstants.inProgress);
       const apiUrl = import.meta.env.VITE_API_URL + "/business/update";
+      const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify({ id: business._id, savedChanges }),
       };
@@ -96,8 +99,12 @@ const AdminBusinessCard = ({
       setDeleteApiStatus(apiStatusConstants.inProgress);
       setConfirmDelete(false);
       const apiUrl = import.meta.env.VITE_API_URL + `/business/${business._id}`;
+      const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
       };
       const response = await fetch(apiUrl, options);
       const data = await response.json();

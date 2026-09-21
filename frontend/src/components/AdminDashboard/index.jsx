@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import AdminBusinessCard from "../AdminBusinessCard";
 import AdminNavbar from "../AdminNavbar";
 import { ThreeDots, Oval } from "react-loader-spinner";
@@ -106,7 +107,7 @@ const AdminDashboard = () => {
   };
 
   const updateStateAfterDelete = (businessesList) => {
-    console.log(businessesList);
+    //console.log(businessesList);
     setBusinessesList(businessesList);
   };
 
@@ -125,10 +126,12 @@ const AdminDashboard = () => {
     try {
       setAddApiStatus(apiStatusConstants.inProgress);
       const apiUrl = import.meta.env.VITE_API_URL + "/business/add-business";
+      const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify(newBusiness),
       };
